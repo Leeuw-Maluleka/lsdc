@@ -53,7 +53,7 @@ $capnum=0;
 <input type="button" id="C2" value="OK" onclick="<?php $capnum=$capnum;?>"
 ?php echo $capnum;?>
 -------------------------->
-
+<br>
 <input type="submit" id="C2" value="OK"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
 
 
