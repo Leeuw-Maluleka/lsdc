@@ -34,7 +34,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 <br>
 <input type="text" name="StudentIDno" placeholder="StudentIDno">
 <br>
-<input type="text" name="CourseName" placeholder="CourseName">
+
+<?php
+$sql = "SELECT CODE, DESCRIPTION FROM LOOKUPTABLE WHERE TYPE='COURSE'";
+$result = $connection->query($sql);
+if (!$connection->query($sql)) {
+    die( "Error: Failed to return data from table LOOKUPTABLE ".$conn->error."<br>");
+}
+
+    echo '<select name="CourseName">';
+    echo '  <option value="none">--Select Course--</option>';
+    if ($result->num_rows > 0) {
+	$rowsremaining = $result->num_rows;
+        
+        while($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row["CODE"].'"> '.$row["DESCRIPTION"].'</option>';
+        }
+    }
+    echo '</select>';
+    echo '&nbsp;';
+
+?>
 <br>
 <input type="text" name="CertificateType" placeholder="CertificateType">
 <br>
