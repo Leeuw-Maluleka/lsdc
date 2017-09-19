@@ -55,8 +55,28 @@ if (!$connection->query($sql)) {
     echo '&nbsp;';
 
 ?>
+
 <br>
-<input type="text" name="CertificateType" placeholder="CertificateType">
+<?php
+$sql = "SELECT CODE, DESCRIPTION FROM LOOKUPTABLE WHERE TYPE='CERT'";
+$result = $connection->query($sql);
+if (!$connection->query($sql)) {
+    die( "Error: Failed to return data from table LOOKUPTABLE ".$conn->error."<br>");
+}
+
+    echo '<select name="CertificateType">';
+    echo '  <option value="none">--Select Certificate--</option>';
+    if ($result->num_rows > 0) {
+	$rowsremaining = $result->num_rows;
+        
+        while($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row["CODE"].'"> '.$row["DESCRIPTION"].'</option>';
+        }
+    }
+    echo '</select>';
+    echo '&nbsp;';
+
+?>
 <br>
 <input type="text" name="ModuleName" placeholder="ModuleName">
 <br>
