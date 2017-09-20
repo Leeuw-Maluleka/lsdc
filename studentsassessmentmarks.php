@@ -16,8 +16,8 @@ if (!$connection->select_db("lsdcdb")) {die ("lsdcdb selection failed");}
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	//Delete --> echo "TESTING<br>";
-    $sqltext = "INSERT INTO studentsassessmentmarks (StudentName, StudentIDno, CourseName, CertificateType, ModuleName,SAQAID, PercentageAchieved, Achivement) VALUES "; //Changed
-    $inputvalues = "'".$_POST["StudentName"]."','".$_POST["StudentIDno"]."','".$_POST["CourseName"]."','".$_POST["CertificateType"]."','".$_POST["ModuleName"]."','".$_POST["SAQAID"]."','".$_POST["PercentageAchieved"]."','".$_POST["Achivement"]."'"; //Modify
+    $sqltext = "INSERT INTO studentsassessmentmarks (StudentName, StudentIDno, CourseName, CertificateType, ModuleName,SAQAID, PercentageAchieved, Achievement) VALUES "; //Changed
+    $inputvalues = "'".$_POST["StudentName"]."','".$_POST["StudentIDno"]."','".$_POST["CourseName"]."','".$_POST["CertificateType"]."','".$_POST["ModuleName"]."','".$_POST["SAQAID"]."','".$_POST["PercentageAchieved"]."','".$_POST["Achievement"]."'"; //Modify
     $sqltext = "$sqltext ($inputvalues)"; //Modify
 
 
@@ -78,13 +78,71 @@ if (!$connection->query($sql)) {
 
 ?>
 <br>
-<input type="text" name="ModuleName" placeholder="ModuleName">
+<?php
+$sql = "SELECT CODE, DESCRIPTION FROM LOOKUPTABLE WHERE TYPE='MODULES'";
+$result = $connection->query($sql);
+if (!$connection->query($sql)) {
+    die( "Error: Failed to return data from table LOOKUPTABLE ".$conn->error."<br>");
+}
+
+    echo '<select name="ModuleName">';
+    echo '  <option value="none">--Select Modules--</option>';
+    if ($result->num_rows > 0) {
+	$rowsremaining = $result->num_rows;
+        
+        while($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row["CODE"].'"> '.$row["DESCRIPTION"].'</option>';
+        }
+    }
+    echo '</select>';
+    echo '&nbsp;';
+
+?>
 <br>
-<input type="text" name="SAQAID" placeholder="SAQAID">
+<?php
+$sql = "SELECT CODE, DESCRIPTION FROM LOOKUPTABLE WHERE TYPE='SAQA'";
+$result = $connection->query($sql);
+if (!$connection->query($sql)) {
+    die( "Error: Failed to return data from table LOOKUPTABLE ".$conn->error."<br>");
+}
+
+    echo '<select name="SAQAID">';
+    echo '  <option value="none">--Select SAQAID--</option>';
+    if ($result->num_rows > 0) {
+	$rowsremaining = $result->num_rows;
+        
+        while($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row["CODE"].'"> '.$row["DESCRIPTION"].'</option>';
+        }
+    }
+    echo '</select>';
+    echo '&nbsp;';
+
+?>
 <br>
 <input type="text" name="PercentageAchieved" placeholder="PercentageAchieved">
 <br>
-<input type="text" name="Achivement" placeholder="Achivement"> <!-- Inserted " -->
+
+<?php
+$sql = "SELECT CODE, DESCRIPTION FROM LOOKUPTABLE WHERE TYPE='ACH'";
+$result = $connection->query($sql);
+if (!$connection->query($sql)) {
+    die( "Error: Failed to return data from table LOOKUPTABLE ".$conn->error."<br>");
+}
+
+    echo '<select name="Achievement">';
+    echo '  <option value="none">--Select Achievement--</option>';
+    if ($result->num_rows > 0) {
+	$rowsremaining = $result->num_rows;
+        
+        while($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row["CODE"].'"> '.$row["DESCRIPTION"].'</option>';
+        }
+    }
+    echo '</select>';
+    echo '&nbsp;';
+
+?>
 
 <!-------- Delete --------
 ?php
