@@ -5,5 +5,11 @@ function validString(str)
     else
         {return true}
 }
-function checktasformvalues(form)
-{alert("Input cannot be empty")}
+function checkformvalues(form)
+{
+	if(validString(form.StudentName.value) == false)
+	{
+	alert("Input cannot be empty")
+	return false
+	}
+}
