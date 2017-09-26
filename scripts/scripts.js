@@ -9,7 +9,13 @@ function checkformvalues(form)
 {
 	if(validString(form.StudentName.value) == false)
 	{
-	alert("Input cannot be empty")
+	alert("Name field cannot be empty")
 	return false
+	}
+	
+	else if(validString(form.StudentIDno.value) == false)
+	{
+		alert("ID field cannot be empty")
+		return false
 	}
 }
