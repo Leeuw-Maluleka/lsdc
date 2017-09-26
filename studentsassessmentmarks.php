@@ -153,6 +153,6 @@ $capnum=0;
 -------------------------->
 <br>
 <input type="submit" id="C2" value="OK" onclick="return checkformvalues(this.form)"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
-<script scr="scripts/scripts.js"></script>
+<script src="scripts/scripts.js"></script>
 
 </form>
