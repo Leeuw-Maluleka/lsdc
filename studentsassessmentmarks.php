@@ -152,7 +152,7 @@ $capnum=0;
 ?php echo $capnum;?>
 -------------------------->
 <br>
-<input type="submit" id="C2" value="OK"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
-
+<input type="submit" id="C2" value="OK" onclick="return checkformvalues(this.form)"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
+<script scr="scripts/scripts.js"></script>
 
 </form>
