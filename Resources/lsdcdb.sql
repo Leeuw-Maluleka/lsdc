@@ -1,11 +1,11 @@
- Server: localhost  -   Database: lsdcdb  -   Table: lookuptable
+ Server: localhost  -   Database: lsdcdb
  
 -- phpMyAdmin SQL Dump
 -- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 27, 2017 at 12:11 AM
+-- Generation Time: Sep 27, 2017 at 02:16 AM
 -- Server version: 5.1.36
 -- PHP Version: 5.3.0
 
@@ -74,4 +74,85 @@ INSERT INTO `lookuptable` (`ID`, `Type`, `Code`, `Description`) VALUES
 (38, 'SAQA', '116943', '116943'),
 (39, 'SAQA', '116942', '116942'),
 (40, 'SAQA', '119078', '119078');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentpersonalinformation`
+--
+
+CREATE TABLE IF NOT EXISTS `studentpersonalinformation` (
+  `studentpersonalinformationID` int(11) NOT NULL,
+  `StudentFirstName` varchar(100) NOT NULL,
+  `StudentMiddleName` varchar(100) NOT NULL,
+  `StudentLastName` varchar(100) NOT NULL,
+  `StudentIDno` varchar(13) NOT NULL,
+  `StudentAge` int(3) NOT NULL,
+  `StudentOccupation` varchar(30) NOT NULL,
+  `StudentGender` varchar(6) NOT NULL,
+  `StudentHomeAddress` varchar(40) NOT NULL,
+  `StudentsContactDetails` bigint(10) NOT NULL,
+  PRIMARY KEY (`studentpersonalinformationID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `studentpersonalinformation`
+--
+
+INSERT INTO `studentpersonalinformation` (`studentpersonalinformationID`, `StudentFirstName`, `StudentMiddleName`, `StudentLastName`, `StudentIDno`, `StudentAge`, `StudentOccupation`, `StudentGender`, `StudentHomeAddress`, `StudentsContactDetails`) VALUES
+(1, 'Don', 'John', 'Laka', '9901012223334', 18, 'Unemployed', 'Male', 'Plot 613 Bosplaas West', 815265598);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentsassessmentmarks`
+--
+
+CREATE TABLE IF NOT EXISTS `studentsassessmentmarks` (
+  `studentassessmentmarksID` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `StudentName` varchar(100) NOT NULL,
+  `StudentIDno` varchar(15) NOT NULL,
+  `CourseName` varchar(30) NOT NULL,
+  `CertificateType` varchar(30) NOT NULL,
+  `ModuleName` varchar(40) NOT NULL,
+  `SAQAID` varchar(10) NOT NULL,
+  `PercentageAchieved` decimal(5,2) NOT NULL,
+  `Achievement` varchar(4) NOT NULL,
+  PRIMARY KEY (`studentassessmentmarksID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1025 ;
+
+--
+-- Dumping data for table `studentsassessmentmarks`
+--
+
+INSERT INTO `studentsassessmentmarks` (`studentassessmentmarksID`, `StudentName`, `StudentIDno`, `CourseName`, `CertificateType`, `ModuleName`, `SAQAID`, `PercentageAchieved`, `Achievement`) VALUES
+(1022, 'Boipelo Maluleka', '9501234567891', 'AD', 'NT', 'IC', '117925', '88.00', ''),
+(1021, 'Leeuw Maluleka', '9004021548957', 'System Development', 'National Certificate', 'Architecture', '13931', '69.00', 'Pass'),
+(1023, 'Moeti Malesela', '8701234567890', 'TS', 'NT', 'WP', '116942', '83.00', 'P'),
+(1024, 'lebohang More', '990123456789', 'SD', 'NT', 'IC', '117925', '40.00', 'F');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentsonarrears`
+--
+
+CREATE TABLE IF NOT EXISTS `studentsonarrears` (
+  `StudentsOnArrearsID` int(11) NOT NULL,
+  `StudentName` varchar(100) NOT NULL,
+  `StudentIDno` varchar(15) NOT NULL,
+  `CourseName` varchar(30) NOT NULL,
+  `CertificateType` varchar(30) NOT NULL,
+  `TotalCourseFee` varchar(40) NOT NULL,
+  `CourseDuration` varchar(10) NOT NULL,
+  `MonthsBehind` decimal(5,2) NOT NULL,
+  `InterestPercentage` decimal(5,0) NOT NULL,
+  `AmountDue` varchar(20) NOT NULL,
+  PRIMARY KEY (`StudentsOnArrearsID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `studentsonarrears`
+--
+
 
