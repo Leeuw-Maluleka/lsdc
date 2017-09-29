@@ -1,15 +1,20 @@
- Server: localhost  -   Database: lsdcdb
- 
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Sep 27, 2017 at 02:16 AM
--- Server version: 5.1.36
--- PHP Version: 5.3.0
+-- Host: 127.0.0.1
+-- Generation Time: Sep 29, 2017 at 10:03 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `lsdcdb`
@@ -27,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `lookuptable` (
   `Code` varchar(10) NOT NULL,
   `Description` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `lookuptable`
@@ -93,14 +98,7 @@ CREATE TABLE IF NOT EXISTS `studentpersonalinformation` (
   `StudentHomeAddress` varchar(40) NOT NULL,
   `StudentsContactDetails` bigint(10) NOT NULL,
   PRIMARY KEY (`studentpersonalinformationID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `studentpersonalinformation`
---
-
-INSERT INTO `studentpersonalinformation` (`studentpersonalinformationID`, `StudentFirstName`, `StudentMiddleName`, `StudentLastName`, `StudentIDno`, `StudentAge`, `StudentOccupation`, `StudentGender`, `StudentHomeAddress`, `StudentsContactDetails`) VALUES
-(1, 'Don', 'John', 'Laka', '9901012223334', 18, 'Unemployed', 'Male', 'Plot 613 Bosplaas West', 815265598);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -119,17 +117,52 @@ CREATE TABLE IF NOT EXISTS `studentsassessmentmarks` (
   `PercentageAchieved` decimal(5,2) NOT NULL,
   `Achievement` varchar(4) NOT NULL,
   PRIMARY KEY (`studentassessmentmarksID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1025 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1080 ;
 
 --
 -- Dumping data for table `studentsassessmentmarks`
 --
 
 INSERT INTO `studentsassessmentmarks` (`studentassessmentmarksID`, `StudentName`, `StudentIDno`, `CourseName`, `CertificateType`, `ModuleName`, `SAQAID`, `PercentageAchieved`, `Achievement`) VALUES
-(1022, 'Boipelo Maluleka', '9501234567891', 'AD', 'NT', 'IC', '117925', '88.00', ''),
-(1021, 'Leeuw Maluleka', '9004021548957', 'System Development', 'National Certificate', 'Architecture', '13931', '69.00', 'Pass'),
-(1023, 'Moeti Malesela', '8701234567890', 'TS', 'NT', 'WP', '116942', '83.00', 'P'),
-(1024, 'lebohang More', '990123456789', 'SD', 'NT', 'IC', '117925', '40.00', 'F');
+(1046, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1045, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1044, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1043, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1042, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1041, 'TEST', '444555', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1047, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1048, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1049, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1050, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1051, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1052, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1053, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1054, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1055, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1056, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1057, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1058, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1059, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1060, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1061, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1062, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1063, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1064, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1065, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1066, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1067, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1068, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1069, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1070, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1071, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1072, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1073, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1074, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1075, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1076, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1077, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1078, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none'),
+(1079, 'Test2', '1234321', 'none', 'none', 'none', 'none', '0.00', 'none');
 
 -- --------------------------------------------------------
 
@@ -149,10 +182,5 @@ CREATE TABLE IF NOT EXISTS `studentsonarrears` (
   `InterestPercentage` decimal(5,0) NOT NULL,
   `AmountDue` varchar(20) NOT NULL,
   PRIMARY KEY (`StudentsOnArrearsID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `studentsonarrears`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
