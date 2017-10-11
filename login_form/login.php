@@ -1,4 +1,4 @@
-<?php include "dbConfig.php";
+<?php include "../dbConfig.php";
 
 $msg = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

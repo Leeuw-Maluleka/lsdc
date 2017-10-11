@@ -1,13 +1,14 @@
 <?php
-$servername = "localhost";
-$username = "lsdccoza_admin";
-$password = "lsdcadmin123";
-$dbname = "lsdccoza_lsdcdb";
+include "../dbConfig.php";
+//$servername = "localhost";
+//$username = "lsdccoza_admin";
+//$password = "lsdcadmin123";
+//$dbname = "lsdccoza_lsdcdb";
 $mysql_table = "studentsassessmentmarks";
 
-$connection = new mysqli("localhost","lsdccoza_admin","lsdcadmin123");
-if ($connection->connect_error) {die ("DB connection failed");}
-if (!$connection->select_db($dbname)) {die ("lsdcdb selection failed");}
+//$connection = new mysqli("localhost","lsdccoza_admin","lsdcadmin123");
+//if ($connection->connect_error) {die ("DB connection failed");}
+//if (!$connection->select_db($dbname)) {die ("lsdcdb selection failed");}
 //Delete --> $sqltext ="INSERT INTO studentsassessmentmarks (studentassessmentmarksID, StudentName, StudentIDno) VALUES (20,'Joe Nina','9901234567890')";
 //Delete --> echo $sqltext;
 //Delete --> if (!$connection->query($sqltext)) {echo "Error inserting data";
