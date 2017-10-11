@@ -8,16 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $msg = "You must enter all fields";
     } else {
         $sql = "SELECT * FROM members WHERE name = '$name' AND password = '$password'";
-        $query = mysql_query($sql);
 
-        if ($query === false) {
+        if (!$connection->query($sql)) {
             echo "Could not successfully run query ($sql) from DB: " . mysql_error();
             exit;
         }
-
-        if (mysql_num_rows($query) > 0) {
+		$result = $connection->query($sql);
+        if ($result->num_rows > 0) {
          
-            header('Location: YOUR_LOCATION');
+            header('Location: index.html');
             exit;
         }
 
