@@ -1,5 +1,12 @@
 <?php include "../dbConfig.php";
 
+if ((isset($_GET['doLogoff'])) &&($_GET['doLogoff']=="true")) {
+    // to fully log out a visitor we need to clear the session variables
+    session_start();
+    session_unset();
+    session_destroy();
+} 
+
 $msg = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST["name"];
@@ -15,8 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 		$result = $connection->query($sql);
         if ($result->num_rows > 0) {
-         
-            header('Location: index.html');
+            session_start();
+            $_SESSION["user"] = $name;
+            header('Location: ../pages/studentsassessmentmarks.php');
             exit;
         }
 
@@ -25,27 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>discussdesk.com - Login form in PHP mysql</title>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<title>LSDC Login</title>
 <link href="style.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
-
 	<form name="frmregister"action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
 		<table class="form" border="0">
-
 			<tr>
 			<td></td>
 				<td style="color:red;">
 				<?php echo $msg; ?></td>
-			</tr> 
-			
+			</tr> 			
 			<tr>
 				<th><label for="name"><strong>Name:</strong></label></th>
 				<td><input class="inp-text" name="name" id="name" type="text" size="30" /></td>
@@ -57,16 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<tr>
 			<td></td>
 				<td class="submit-button-right">
-				<input class="send_btn" type="submit" value="Submit" alt="Submit" title="Submit" />
-				
-				<input class="send_btn" type="reset" value="Reset" alt="Reset" title="Reset" /></td>
-				
+				<input class="send_btn" type="submit" value="Submit" alt="Submit" title="Submit" />				
+				<input class="send_btn" type="reset" value="Reset" alt="Reset" title="Reset" /></td>				
 			</tr>
 		</table>
 	</form>
-
-<div style="line-height: 30px; margin-left: 307px;"><b>Name:</b> discussdesk <br/>  <b>Password:</b> discussdesk</div>
-<div style="line-height: 30px; margin-left: 207px;">For More Info: <a href="http://www.discussdesk.com">Visit our Website</a></div>
-
 </body>
 </html>
