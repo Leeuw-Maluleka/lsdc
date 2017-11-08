@@ -1,5 +1,5 @@
 
-8function validString(str) 
+function validString(str) 
 {
     if ((str.length == 0) || (str == 'none'))
         {return false}

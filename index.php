@@ -1,4 +1,1 @@
-<?php
-header('Location: pages/studentsassessmentmarks.php');
-exit();
-?>
+<?php header("Location: login.php") ?>

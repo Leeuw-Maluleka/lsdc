@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-    <a href="../login_form/login.php?doLogoff=true">Logoff&nbsp;user&nbsp;<?php echo $_SESSION["user"];?></a><br>
+    <a href="../login.php?doLogoff=true">Logoff&nbsp;user&nbsp;<?php echo $_SESSION["user"];?></a><br>
 
 <?php
 $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE'";

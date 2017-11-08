@@ -1,4 +1,4 @@
-<?php include "../dbConfig.php";
+<?php include "dbConfig.php";
 
 if ((isset($_GET['doLogoff'])) &&($_GET['doLogoff']=="true")) {
     // to fully log out a visitor we need to clear the session variables
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result->num_rows > 0) {
             session_start();
             $_SESSION["user"] = $name;
-            header('Location: ../pages/studentsassessmentmarks.php');
+            header('Location: pages/studentsassessmentmarks.php');
             exit;
         }
 
@@ -35,12 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width">
 <title>LSDC Login</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="styles/loginstyles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<form name="frmregister"action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
-		<table class="form" border="0">
+		<table class="form">
 			<tr>
 			<td></td>
 				<td style="color:red;">
