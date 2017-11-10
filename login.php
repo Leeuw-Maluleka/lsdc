@@ -55,20 +55,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<form name="frmregister"action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
 		<table class="form">
 			<tr>
-			<td></td>
 				<td style="color:red;">
 				<?php echo $msg; ?></td>
 			</tr> 			
 			<tr>
-				<th><label for="name"><strong>Name:</strong></label></th>
-				<td><input class="inp-text" name="name" id="name" type="text" size="30" /></td>
+                            <td><input class="inp-text" name="name" id="name" type="text" placeholder="User Name" /></td>
 			</tr>
 			<tr>
-				<th><label for="name"><strong>Password:</strong></label></th>
-				<td><input class="inp-text" name="password" id="password" type="password" size="30" /></td>
+                            <td><input class="inp-text" name="password" id="password" type="password" placeholder="Password" /></td>
 			</tr>
 			<tr>
-			<td></td>
 				<td class="submit-button-right">
 				<input class="send_btn" type="submit" value="Submit" alt="Submit" title="Submit" />				
 				<input class="send_btn" type="reset" value="Reset" alt="Reset" title="Reset" /></td>				
