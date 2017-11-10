@@ -13,6 +13,10 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
 
 $mysql_table = "studentsassessmentmarks";
 session_start();
+if (!isset($_SESSION["user"])) {
+    echo 'You have been logged out. <a href="../login.php">Click here</a> to log in.';
+    exit;
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sqltext = "INSERT INTO studentsassessmentmarks (StudentName, StudentIDno, CourseName, CertificateType, ModuleName,SAQAID, PercentageAchieved, Achievement) VALUES "; //Changed
     $inputvalues = "'" . $_POST["StudentName"] . "','" . $_POST["StudentIDno"] . "','" . $_POST["CourseName"] . "','" . $_POST["CertificateType"] . "','" . $_POST["ModuleName"] . "','" . $_POST["SAQAID"] . "','" . $_POST["PercentageAchieved"] . "','" . $_POST["Achievement"] . "'"; //Modify
@@ -30,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <a href="../login.php?doLogoff=true">Logoff&nbsp;user&nbsp;<?php echo $_SESSION["user"];?></a><br>
-
+    
 <?php
 $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE'";
 $result = $connection->query($sql);
