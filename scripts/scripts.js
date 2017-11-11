@@ -6,6 +6,28 @@ function validString(str)
     else
         {return true}
 }
+
+function checkpassword(form)
+{
+    if(validString(form.Name.value) == false)
+    {
+        alert("Name field cannot be empty")
+        return false
+    }
+
+    if(validString(form.Password.value) == false)
+    {
+        alert("Password field cannot be empty")
+        return false
+    }
+
+    if(form.Password.value != form.Confirm.value)
+    {
+        alert("Password fields must match")
+        return false
+    }
+}
+
 function checkformvalues(form)
 {
 	if(validString(form.StudentName.value) == false)

@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Could not successfully run query ($sql) from DB: " . mysql_error();
             exit;
         }
-		$result = $connection->query($sql);
+        $result = $connection->query($sql);
         if ($result->num_rows > 0) {
             session_start();
             $_SESSION["user"] = $name;
@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<input class="send_btn" type="submit" value="Submit" alt="Submit" title="Submit" />				
 				<input class="send_btn" type="reset" value="Reset" alt="Reset" title="Reset" /></td>				
 			</tr>
+                        <tr><td><a href="pages/createuser.php">Register New User</a></td></tr>
 		</table>
 	</form>
 </body>

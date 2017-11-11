@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <a href="../login.php?doLogoff=true">Logoff&nbsp;user&nbsp;<?php echo $_SESSION["user"];?></a><br>
+    <form name="studentsassessmentmarksform" method="post" action="<?php echo basename(__FILE__);?>"> <!-- Changed "_FILE_" -->
     
 <?php
 $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE'";
