@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result->num_rows > 0) {
             session_start();
             $_SESSION["user"] = $name;
-            header('Location: pages/studentsassessmentmarks.php');
+            header('Location: pages/menu.php');
             exit;
         }
 
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<input class="send_btn" type="submit" value="Submit" alt="Submit" title="Submit" />				
 				<input class="send_btn" type="reset" value="Reset" alt="Reset" title="Reset" /></td>				
 			</tr>
-                        <tr><td><a href="pages/createuser.php">Register New User</a></td></tr>
+                        <tr><td class="submit-button-right"><a href="pages/createuser.php">Register New User</a></td></tr>
 		</table>
 	</form>
 </body>

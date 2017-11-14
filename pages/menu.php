@@ -42,17 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <a href="../">Back</a>
-    <form name="createuser" method="post" action="<?php echo basename(__FILE__);?>"> <!-- Changed "_FILE_" -->
-        <input type="text" name="Name" placeholder="Enter user name">
-        <br>
-        <input type="email" name="Email" placeholder="Enter email address">
-        <br>
-        <input type="password" name="Password" placeholder="Enter password">
-        <br>
-        <input type="password" name="Confirm" placeholder="Confirm password">
-        <br>
-        <input name="submitbtn" type="submit" id="C2" value="OK" onclick="return checkpassword(this.form)"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
-        <script src="../scripts/scripts.js"></script>
-
-    </form>
+    <a href="quote.php" class="button">Quote</a><br>
+    <a href="quote.php" class="button">Register</a><br>
+    <a href="quote.php" class="button">Assignments</a><br>
+    <a href="quote.php" class="button">Billing</a><br>
 </body>
