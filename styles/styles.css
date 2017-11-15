@@ -21,4 +21,6 @@ a.button {
     color: initial;
 }
 
-select.course { display: none};
+select.course { display: none}
+
+div.fees { background-color: white }

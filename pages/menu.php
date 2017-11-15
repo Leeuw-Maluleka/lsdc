@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <a href="../">Back</a>
     <a href="quote.php" class="button">Quote</a><br>
-    <a href="quote.php" class="button">Register</a><br>
-    <a href="quote.php" class="button">Assignments</a><br>
-    <a href="quote.php" class="button">Billing</a><br>
+    <a href="#" class="button">Register</a><br>
+    <a href="#" class="button">Assignments</a><br>
+    <a href="#" class="button">Billing</a><br>
 </body>

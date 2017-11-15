@@ -47,14 +47,14 @@ function OnLevelChange(form)
 {
     form.NTCourseName.style.display = "none"
     form.CTCourseName.style.display = "none"
-    if (form.CertificateType.value = "NT")
+    if (form.CertificateType.value == "NT")
     {
         form.NTCourseName.style.display = "block"
     }
     else
-    if (form.CertificateType.value = "CT")
+    if (form.CertificateType.value == "CT")
     {
-        form.CTTCourseName.style.display = "block"
+        form.CTCourseName.style.display = "block"
     }
     return true
 }
