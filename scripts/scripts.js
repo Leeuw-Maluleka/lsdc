@@ -47,6 +47,11 @@ function OnLevelChange(form)
 {
     form.NTCourseName.style.display = "none"
     form.CTCourseName.style.display = "none"
+    var quotediv = document.getElementsByName("quote")[0]
+    if (quotediv != null) {
+        quotediv.style.display = "none" 
+        quotediv.innerHTML = ""
+    }
     if (form.CertificateType.value == "NT")
     {
         form.NTCourseName.style.display = "block"

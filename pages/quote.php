@@ -32,13 +32,17 @@
         if (!$connection->query($sql)) {
             die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
         }
-
+        echo $_SESSION["CertificateType"].'<br>';
         echo '<select name="CertificateType" onchange="return OnLevelChange(this.form)">';
         echo '  <option value="none">--Select Level--</option>';
         if ($result->num_rows > 0) {
             $rowsremaining = $result->num_rows;
 
             while ($row = $result->fetch_assoc()) {
+                $_option = '<option value="' . $row["CODE"] . '"> ' . $row["DESCRIPTION"] . '</option>';
+                if (isset($_SESSION["CertificateType"]) and $row["CODE"] == $_SESSION["CertificateType"]){
+                    $_option = '<option value="' . $row["CODE"] . '" selected="selected"> ' . $row["DESCRIPTION"] . '</option>';
+                }
                 echo '<option value="' . $row["CODE"] . '"> ' . $row["DESCRIPTION"] . '</option>';
             }
         }
@@ -92,6 +96,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $coursecode = $_POST["NTCourseName"];
+    $_SESSION["CertificateType"] = $_POST["CertificateType"];
+    $_SESSION["CTCourseName"] = $_POST["CTCourseName"];
     if ($_POST["CertificateType"] == "CT") {
         $coursecode = $_POST["CTCourseName"];
     }
@@ -105,9 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Error: Failed to return data from '$mysql_table' " . $connection->error . "<br>"); 
     }
 
-    echo '<div class="fees">';
     $result = $connection->query($sqltext);
     if ($result->num_rows > 0) {
+        echo '<div name="quote" class="fees">';
+        echo "<h4>*** Quotation ***</h4>";
         $rowsremaining = $result->num_rows;
         while ($row = $result->fetch_assoc()) {
             echo '<span>Course Code: ' . $row["CourseCode"] . '</span><br>';
@@ -116,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<span>Certification: ' . $row["Certification"] . '</span><br>';
             echo '<span>Monthly Payment: ' . $row["Payment"] . '</span><br>';
             echo '<span>Duration: ' . $row["Duration"] . ' months</span><br>';
-            echo '<span>TOTAL FEES: ' . $row["TotalFees"] . ' months</span><br>';
+            echo '<span><strong>TOTAL FEES: ' . $row["TotalFees"] . '<strong></span><br>';
         }
     }
     echo '</div>';
