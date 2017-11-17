@@ -11,7 +11,7 @@
     if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$connection->error);}
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $mysql_table = "studentsassessmentmarks";
+    $mysql_table = "coursefees";
     session_start();
     if (!isset($_SESSION["user"])) {
         echo 'You have been logged out. <a href="../login.php">Click here</a> to log in.';
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $sqltext = "SELECT CourseCode, l.Description,Payment,Registration,Certification,CarryCard,Duration, 
                 (Payment*Duration+Certification+Registration+COALESCE(CarryCard,0)) TotalFees 
-                FROM coursefees c JOIN LookupTable l ON c.CourseCode = l.Code AND l.Type = 'Course' 
+                FROM coursefees c JOIN lookuptable l ON c.CourseCode = l.Code AND l.Type = 'Course' 
                 WHERE CourseCode = '$coursecode'";     
     
     if (!$connection->query($sqltext)) { 
@@ -147,7 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<span>Duration: ' . $row["Duration"] . ' months</span><br>';
             echo '<span><strong>TOTAL FEES: ' . $row["TotalFees"] . '<strong></span><br>';
         }
-        echo "Rows: $rowsremaining<br>";
     }
     echo '</div>';
 }
