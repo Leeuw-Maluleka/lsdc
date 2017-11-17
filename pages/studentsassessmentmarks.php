@@ -14,7 +14,12 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
 $mysql_table = "studentsassessmentmarks";
 session_start();
 if (!isset($_SESSION["user"])) {
-    echo 'You have been logged out. <a href="../login.php">Click here</a> to log in.';
+        echo '<head>';
+        echo '<meta name="viewport" content="width=device-width">';
+        echo '</head>';
+        echo '<body>';
+        echo 'You have been logged out. <a href="../login.php">Click here</a> to log in.';
+        echo '</body>';
     exit;
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
