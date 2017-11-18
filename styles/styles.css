@@ -24,3 +24,15 @@ a.button {
 select.course { display: none}
 
 div.fees { background-color: white }
+
+body.register { width: 800px }
+
+table { 
+    width: 100%;
+    background-color: white;
+}
+
+td.desc  { width: 30%; }
+td.desc th.desc { font-weight: bold; }
+
+

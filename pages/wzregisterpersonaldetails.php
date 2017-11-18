@@ -164,7 +164,6 @@ if ((isset($_GET['doRegister'])) &&($_GET['doRegister']=="true")) {
     else if ($_SESSION["CertificateType"] == "NT") {
         $coursecode = $_SESSION["NTCourseName"];
     }
-    //$_SESSION["RegisterCourse"] = $coursecode;
 
     if (isset($_SESSION["RegisterCourse"])) {
         $coursecode = $_SESSION["RegisterCourse"];
@@ -175,6 +174,7 @@ if ((isset($_GET['doRegister'])) &&($_GET['doRegister']=="true")) {
         }
         unset($_SESSION["RegisterCourse"]);
         echo 'Course registered successfully.<br>';
+        echo '<a href="register.php">Click here</a> to view registrations.<br>';
     }    
 }
 ?>

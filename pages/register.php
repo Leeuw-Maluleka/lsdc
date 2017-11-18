@@ -11,7 +11,7 @@
     if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$connection->error);}
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $mysql_table = "coursefees";
+    $mysql_table = "registrations";
     session_start();
     if (!isset($_SESSION["user"])) {
         echo '<head>';
@@ -22,140 +22,55 @@
         echo '</body>';
         exit;
     }
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_SESSION["CertificateType"] = $_POST["CertificateType"];
-        $_SESSION["CTCourseName"] = $_POST["CTCourseName"];
-        $_SESSION["NTCourseName"] = $_POST["NTCourseName"];
-    }
 ?>
 <head>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/registerstyles.css">
 </head>
 <body>
     <a href="../pages/menu.php">Menu</a><br>
-    <form name="feesquote" method="post" action="<?php echo basename(__FILE__);?>"> <!-- Changed "_FILE_" -->
-    
+    <span>Registration Details</span><br>
     <?php
-        $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='CERT'";
+        $user = $_SESSION["user"];
+        $sql = "SELECT m.name, c.CourseCode, l.Description,Payment,Registration,Certification,CarryCard,Duration, 
+                (Payment*Duration+Certification+Registration+COALESCE(CarryCard,0)) TotalFees, r.TimeStamp 
+                FROM coursefees c JOIN lookuptable l ON c.CourseCode = l.Code AND l.Type = 'Course'
+                JOIN registrations r ON r.CourseCode = c.CourseCode
+                JOIN members m ON m.name = r.MemberName WHERE m.name = '$user'";
         $result = $connection->query($sql);
         if (!$connection->query($sql)) {
-            die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
+            die("Error: Failed to return data from table $mysql_table " . $connection->error . "<br>");
         }
-        echo '<select name="CertificateType" onchange="return OnLevelChange(this.form)">';
-        echo '  <option value="none">--Select Level--</option>';
         if ($result->num_rows > 0) {
             $rowsremaining = $result->num_rows;
-
+            echo '<table><br>';
+            echo '<thead><br>';
+            echo '<th>Date</th><br>';
+            echo '<th>Course Code</th>';
+            echo '<th>Description</th>';
+            echo '<th>Payment</th>';
+            echo '<th>Registration</th>';
+            echo '<th>Certification</th>';
+            echo '<th>Carry Card</th>';
+            echo '<th>Duration</th>';
+            echo '<th>Total Fees</th>';
+            echo '</thead><br>';
+            echo '<tbody><br>';
             while ($row = $result->fetch_assoc()) {
-                $option = '<option value="' . $row["CODE"] . '"> ' . $row["DESCRIPTION"] . '</option>';
-                if (isset($_SESSION["CertificateType"]) and $row["CODE"] == $_SESSION["CertificateType"]){
-                    $option = '<option value="' . $row["CODE"] . '" selected="selected"> ' . $row["DESCRIPTION"] . '</option>';
-                }
-                echo $option;
+                $rowhtml = "<tr><br>";
+                $rowhtml = $rowhtml."<td>".$row["TimeStamp"]."</td>";
+                $rowhtml = $rowhtml."<td>".$row["CourseCode"]."</td>";
+                $rowhtml = $rowhtml.'<td>'.$row["Description"].'</td>';
+                $rowhtml = $rowhtml."<td>".$row["Payment"]."</td>";
+                $rowhtml = $rowhtml."<td>".$row["Registration"]."</td>";
+                $rowhtml = $rowhtml."<td>".$row["Certification"]."</td>";
+                $rowhtml = $rowhtml."<td>".$row["CarryCard"]."</td>";
+                $rowhtml = $rowhtml."<td>".$row["Duration"]."</td>";
+                $rowhtml = $rowhtml."<td>".$row["TotalFees"]."</td>";
+                $rowhtml = $rowhtml."</tr></br>";
+                echo $rowhtml;
             }
+            echo '</table>';
         }
-        echo '</select>';
     ?>
-
-<?php
-    $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE' AND PARENTCODE='NT'";
-    $result = $connection->query($sql);
-    if (!$connection->query($sql)) {
-        die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
-    }
-
-    $htmltext = '<select class="course" name="NTCourseName" style="display:none">';
-    if (isset($_SESSION["CertificateType"]) and $_SESSION["CertificateType"] == "NT"){
-        $htmltext = '<select class="course" name="NTCourseName" style="display:block">';
-    }
-    echo $htmltext;
-    echo '  <option value="none">--National--</option>';
-    if ($result->num_rows > 0) {
-        $rowsremaining = $result->num_rows;
-
-        while ($row = $result->fetch_assoc()) {
-            //
-            $option = '<option value="' . $row["CODE"] . '"> ' . $row["DESCRIPTION"] . '</option>';            
-            if (isset($_SESSION["NTCourseName"]) and $row["CODE"] == $_SESSION["NTCourseName"]){
-                $option = '<option value="' . $row["CODE"] . '" selected="selected"> ' . $row["DESCRIPTION"] . '</option>';
-            }
-            echo $option;
-        }
-    }
-    echo '</select>';
-?>
-
-        <br>
-        <br>
-    <?php
-        $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE' AND PARENTCODE IS NULL";
-        $result = $connection->query($sql);
-        if (!$connection->query($sql)) {
-            die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
-        }
-
-        $htmltext = '<select class="course" name="CTCourseName" style="display:none">';
-        if (isset($_SESSION["CertificateType"]) and $_SESSION["CertificateType"] == "CT"){
-            $htmltext = '<select class="course" name="CTCourseName" style="display:block">';
-        }
-        echo $htmltext;
-        echo '  <option value="none">--Certificate--</option>';
-        if ($result->num_rows > 0) {
-            $rowsremaining = $result->num_rows;
-
-            while ($row = $result->fetch_assoc()) {
-                $option = '<option value="' . $row["CODE"] . '"> ' . $row["DESCRIPTION"] . '</option>';
-                if (isset($_SESSION["CTCourseName"]) and $row["CODE"] == $_SESSION["CTCourseName"]){
-                $option = '<option value="' . $row["CODE"] . '" selected="selected"> ' . $row["DESCRIPTION"] . '</option>';
-            }
-            echo $option;
-            }
-        }
-        echo '</select>';
-        ?>
-        <input name="submitbtn" type="submit" id="C2" value="OK" onclick="return checkformvalues(this.form)"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
-        <script src="../scripts/scripts.js"></script>
-
-    </form>
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $coursecode = $_POST["NTCourseName"];
-    if ($_POST["CertificateType"] == "CT") {
-        $coursecode = $_POST["CTCourseName"];
-    }
-    else if ($_POST["CertificateType"] == "NT") {
-        $coursecode = $_POST["NTCourseName"];
-    }
-    $sqltext = "SELECT CourseCode, l.Description,Payment,Registration,Certification,CarryCard,Duration, 
-                (Payment*Duration+Certification+Registration+COALESCE(CarryCard,0)) TotalFees 
-                FROM coursefees c JOIN lookuptable l ON c.CourseCode = l.Code AND l.Type = 'Course' 
-                WHERE CourseCode = '$coursecode'";     
-    
-    if (!$connection->query($sqltext)) { 
-        echo "$sqltext<br>";
-        die("Error: Failed to return data from '$mysql_table' " . $connection->error . "<br>"); 
-    }
-
-    $result = $connection->query($sqltext);
-    if ($result->num_rows > 0) {
-        echo '<div name="quote" class="fees">';
-        echo "<h4>*** Quotation ***</h4>";
-        $rowsremaining = $result->num_rows;
-        while ($row = $result->fetch_assoc()) {
-            echo '<span>Course Code: ' . $row["CourseCode"] . '</span><br>';
-            echo '<span>Course Name: ' . $row["Description"] . '</span><br>';
-            echo '<span>Registration Fee: ' . $row["Registration"] . '</span><br>';
-            echo '<span>Certification: ' . $row["Certification"] . '</span><br>';
-            echo '<span>Monthly Payment: ' . $row["Payment"] . '</span><br>';
-            echo '<span>Duration: ' . $row["Duration"] . ' months</span><br>';
-            echo '<span><strong>TOTAL FEES: ' . $row["TotalFees"] . '<strong></span><br>';
-        }
-    }
-    echo '<a href="wzregisterpersonaldetails.php?test=0" class="button">Register</a>';
-    echo '</div>';
-}
-?>
-
 </body>
