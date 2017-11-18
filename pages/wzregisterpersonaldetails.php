@@ -11,7 +11,7 @@
     if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$connection->error);}
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $mysql_table = "coursefees";
+    $mysql_table = "registrations";
     session_start();
     if (!isset($_SESSION["user"])) {
         echo '<head>';
@@ -34,7 +34,7 @@
 </head>
 <body>
     <a href="../pages/menu.php">Menu</a><br>
-    <form name="feesquote" method="post" action="<?php echo basename(__FILE__);?>"> <!-- Changed "_FILE_" -->
+    <form name="feesquote" method="post" action="<?php echo basename(__FILE__);?>"> 
     
     <?php
         $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='CERT'";
@@ -114,7 +114,6 @@
         }
         echo '</select>';
         ?>
-        <input name="submitbtn" type="submit" id="C2" value="OK" onclick="return checkformvalues(this.form)"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
         <script src="../scripts/scripts.js"></script>
 
     </form>
@@ -154,8 +153,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<span><strong>TOTAL FEES: ' . $row["TotalFees"] . '<strong></span><br>';
         }
     }
-    echo '<a href="wzregisterpersonaldetails.php?doRegister=true" class="button">Register</a>';
     echo '</div>';
+}
+if ((isset($_GET['doRegister'])) &&($_GET['doRegister']=="true")) {
+    $user = $_SESSION["user"];
+    $coursecode = $_SESSION["NTCourseName"];
+    if ($_SESSION["CertificateType"] == "CT") {
+        $coursecode = $_SESSION["CTCourseName"];
+    }
+    else if ($_SESSION["CertificateType"] == "NT") {
+        $coursecode = $_SESSION["NTCourseName"];
+    }
+    //$_SESSION["RegisterCourse"] = $coursecode;
+
+    if (isset($_SESSION["RegisterCourse"])) {
+        $coursecode = $_SESSION["RegisterCourse"];
+        $sqltext = "INSERT INTO registrations (CourseCode, MemberName) VALUES ('$coursecode', '$user')";
+        if (!$connection->query($sqltext)) { 
+            echo "$sqltext<br>";
+            die("Error: Failed to insert data into table '$mysql_table' " . $connection->error . "<br>"); 
+        }
+        unset($_SESSION["RegisterCourse"]);
+        echo 'Course registered successfully.<br>';
+    }    
 }
 ?>
 

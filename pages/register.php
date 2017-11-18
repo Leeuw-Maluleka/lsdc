@@ -128,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if ($_POST["CertificateType"] == "NT") {
         $coursecode = $_POST["NTCourseName"];
     }
-    $_SESSION["RegisterCourse"] = $coursecode;
     $sqltext = "SELECT CourseCode, l.Description,Payment,Registration,Certification,CarryCard,Duration, 
                 (Payment*Duration+Certification+Registration+COALESCE(CarryCard,0)) TotalFees 
                 FROM coursefees c JOIN lookuptable l ON c.CourseCode = l.Code AND l.Type = 'Course' 
@@ -154,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<span><strong>TOTAL FEES: ' . $row["TotalFees"] . '<strong></span><br>';
         }
     }
-    echo '<a href="wzregisterpersonaldetails.php?doRegister=true" class="button">Register</a>';
+    echo '<a href="wzregisterpersonaldetails.php?test=0" class="button">Register</a>';
     echo '</div>';
 }
 ?>
