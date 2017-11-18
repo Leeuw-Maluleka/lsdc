@@ -173,6 +173,11 @@ if ((isset($_GET['doRegister'])) &&($_GET['doRegister']=="true")) {
             die("Error: Failed to insert data into table '$mysql_table' " . $connection->error . "<br>"); 
         }
         unset($_SESSION["RegisterCourse"]);
+        $to = "registrations@lsdc.co.za";
+        $subject = "Online Registration ($user)";
+        $txt = "$user has registered for $coursecode";
+        $headers = "From: no-reply@lsdc.co.za\r\nCC: kmolema@gmail.com";
+        mail($to,$subject,$txt,$headers);
         echo 'Course registered successfully.<br>';
         echo '<a href="register.php">Click here</a> to view registrations.<br>';
     }    
