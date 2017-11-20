@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `coursefees` (
   `Duration` int(11) NOT NULL,
   `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ;
 
 --
 -- Dumping data for table `coursefees`
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `lookuptable` (
   `Description` varchar(50) NOT NULL,
   `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+);
 
 --
 -- Dumping data for table `lookuptable`
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `Privileges` int(11) NOT NULL,
   `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+);
 
 --
 -- Dumping data for table `members`
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `members` (
 CREATE TABLE IF NOT EXISTS `privileges` (
   `ID` int(11) NOT NULL,
   `Description` varchar(50) NOT NULL DEFAULT 'None'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 --
 -- Dumping data for table `privileges`
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `MemberName` varchar(256) NOT NULL,
   `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+);
 
 --
 -- Dumping data for table `registrations`
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `studentpersonalinformation` (
   `StudentHomeAddress` varchar(40) NOT NULL,
   `StudentsContactDetails` bigint(10) NOT NULL,
   PRIMARY KEY (`studentpersonalinformationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 -- --------------------------------------------------------
 
@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `studentsassessmentmarks` (
   `Achievement` varchar(4) NOT NULL,
   `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`studentassessmentmarksID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1086 ;
+);
 
 --
 -- Dumping data for table `studentsassessmentmarks`
@@ -216,5 +216,5 @@ CREATE TABLE IF NOT EXISTS `studentsonarrears` (
   `InterestPercentage` decimal(5,0) NOT NULL,
   `AmountDue` varchar(20) NOT NULL,
   PRIMARY KEY (`StudentsOnArrearsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
