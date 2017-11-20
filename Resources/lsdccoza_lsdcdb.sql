@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `coursefees` (
   `Certification` decimal(6,2) DEFAULT NULL,
   `CarryCard` decimal(6,2) DEFAULT NULL,
   `Duration` int(11) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Timestamp` datetime NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`ID`)
 ) ;
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `lookuptable` (
   `ParentCode` varchar(10) DEFAULT NULL,
   `Code` varchar(10) NOT NULL,
   `Description` varchar(50) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Timestamp` datetime NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`ID`)
 );
 
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `email` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `Privileges` int(11) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Timestamp` datetime NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`id`)
 );
 
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `CourseCode` varchar(10) NOT NULL,
   `MemberName` varchar(256) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Timestamp` datetime NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`ID`)
 );
 
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `studentsassessmentmarks` (
   `SAQAID` varchar(10) NOT NULL,
   `PercentageAchieved` decimal(5,2) NOT NULL,
   `Achievement` varchar(4) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Timestamp` datetime NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`studentassessmentmarksID`)
 );
 
