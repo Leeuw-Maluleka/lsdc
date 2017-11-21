@@ -47,6 +47,8 @@ function OnLevelChange(form)
 {
     form.NTCourseName.style.display = "none"
     form.CTCourseName.style.display = "none"
+    form.STCourseName.style.display = "none"
+    form.SPCourseName.style.display = "none"
     var quotediv = document.getElementsByName("quote")[0]
     if (quotediv != null) {
         quotediv.style.display = "none" 
@@ -55,13 +57,33 @@ function OnLevelChange(form)
     if (form.CertificateType.value == "NT")
     {
         form.CTCourseName.value = "none"
+        form.STCourseName.style.display = "none"
+        form.SPCourseName.style.display = "none"
         form.NTCourseName.style.display = "block"
     }
     else
     if (form.CertificateType.value == "CT")
     {
         form.NTCourseName.value = "none"
+        form.STCourseName.style.display = "none"
+        form.SPCourseName.style.display = "none"
         form.CTCourseName.style.display = "block"
+    }
+    else
+    if (form.CertificateType.value == "ST")
+    {
+        form.NTCourseName.value = "none"
+        form.SPCourseName.style.display = "none"
+        form.CTCourseName.style.display = "none"
+        form.STCourseName.style.display = "block"
+    }
+    else
+    if (form.CertificateType.value == "SP")
+    {
+        form.NTCourseName.value = "none"
+        form.CTCourseName.style.display = "none"
+        form.STCourseName.style.display = "none"
+        form.SPCourseName.style.display = "block"
     }
     return true
 }

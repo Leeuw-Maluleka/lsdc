@@ -59,61 +59,51 @@
     ?>
 
 <?php
-    $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE' AND PARENTCODE='NT'";
-    $result = $connection->query($sql);
-    if (!$connection->query($sql)) {
-        die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
-    }
-
-    $htmltext = '<select class="course" name="NTCourseName" style="display:none">';
-    if (isset($_SESSION["CertificateType"]) and $_SESSION["CertificateType"] == "NT"){
-        $htmltext = '<select class="course" name="NTCourseName" style="display:block">';
-    }
-    echo $htmltext;
-    echo '  <option value="none">--National--</option>';
-    if ($result->num_rows > 0) {
-        $rowsremaining = $result->num_rows;
-
-        while ($row = $result->fetch_assoc()) {
-            //
-            $option = '<option value="' . $row["CODE"] . '"> ' . $row["DESCRIPTION"] . '</option>';            
-            if (isset($_SESSION["NTCourseName"]) and $row["CODE"] == $_SESSION["NTCourseName"]){
-                $option = '<option value="' . $row["CODE"] . '" selected="selected"> ' . $row["DESCRIPTION"] . '</option>';
-            }
-            echo $option;
+        $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='CERT'";
+        $result = $connection->query($sql);
+        if (!$connection->query($sql)) {
+            die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
         }
-    }
+        if ($result->num_rows > 0) {
+            $rowsremaining = $result->num_rows;
+
+            while ($row = $result->fetch_assoc()) {
+                $certCd = $row["CODE"];
+                $certDesc = $row["DESCRIPTION"];
+                $select = '<select class="course" name="'.$certCd.'CourseName" style="display:none">';
+                if (isset($_SESSION["CertificateType"]) and $certCd == $_SESSION["CertificateType"]){
+                    $select = '<select class="course" name="'.$certCd.'CourseName" style="display:block">';
+                }
+                echo $select;
+                //Get course data from DB
+                $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE' AND PARENTCODE='$certCd'";
+                $resCert = $connection->query($sql);
+                if (!$connection->query($sql)) {
+                    die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
+                }
+                //Populate course options in select
+                echo '  <option value="none">--'.$certDesc.'--</option>';
+                if ($resCert->num_rows > 0) {
+                    $rowsremaining = $resCert->num_rows;
+
+                    while ($rowOpt = $resCert->fetch_assoc()) {
+                        $option = '<option value="' . $rowOpt["CODE"] . '"> ' . $rowOpt["DESCRIPTION"] . '</option>';            
+                        if (isset($_SESSION[$certCd."CourseName"]) and $rowOpt["CODE"] == $_SESSION[$certCd."CourseName"]){
+                            $option = '<option value="' . $rowOpt["CODE"] . '" selected="selected"> ' . $rowOpt["DESCRIPTION"] . '</option>';
+                        }
+                        echo $option;
+                    }
+                }
+                echo '</select>';
+                
+            }
+        }
+        echo '</select>';
     echo '</select>';
 ?>
 
         <br>
         <br>
-    <?php
-        $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='COURSE' AND PARENTCODE IS NULL";
-        $result = $connection->query($sql);
-        if (!$connection->query($sql)) {
-            die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
-        }
-
-        $htmltext = '<select class="course" name="CTCourseName" style="display:none">';
-        if (isset($_SESSION["CertificateType"]) and $_SESSION["CertificateType"] == "CT"){
-            $htmltext = '<select class="course" name="CTCourseName" style="display:block">';
-        }
-        echo $htmltext;
-        echo '  <option value="none">--Certificate--</option>';
-        if ($result->num_rows > 0) {
-            $rowsremaining = $result->num_rows;
-
-            while ($row = $result->fetch_assoc()) {
-                $option = '<option value="' . $row["CODE"] . '"> ' . $row["DESCRIPTION"] . '</option>';
-                if (isset($_SESSION["CTCourseName"]) and $row["CODE"] == $_SESSION["CTCourseName"]){
-                $option = '<option value="' . $row["CODE"] . '" selected="selected"> ' . $row["DESCRIPTION"] . '</option>';
-            }
-            echo $option;
-            }
-        }
-        echo '</select>';
-        ?>
         <input name="submitbtn" type="submit" id="C2" value="OK" onclick="return checkformvalues(this.form)"> <!-- Changed type to "submit"  and removed "onclick=" attribute-->
         <script src="../scripts/scripts.js"></script>
 
