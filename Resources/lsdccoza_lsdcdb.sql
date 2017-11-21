@@ -1,3 +1,30 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 21, 2017 at 07:56 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `lsdccoza_lsdcdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coursefees`
+--
 
 CREATE TABLE IF NOT EXISTS `coursefees` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -7,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `coursefees` (
   `Certification` decimal(6,2) DEFAULT NULL,
   `CarryCard` decimal(6,2) DEFAULT NULL,
   `Duration` int(11) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT NOW(),
+  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `coursefees`
 --
-DELETE FROM coursefees;
+
 INSERT INTO `coursefees` (`ID`, `CourseCode`, `Payment`, `Registration`, `Certification`, `CarryCard`, `Duration`, `Timestamp`) VALUES
 (4, 'ECD', '570.00', '1200.00', '1000.00', NULL, 11, '2017-11-15 18:28:13'),
 (5, 'EUC', '570.00', '1200.00', '1000.00', NULL, 11, '2017-11-15 18:37:33'),
@@ -38,27 +65,27 @@ CREATE TABLE IF NOT EXISTS `lookuptable` (
   `ParentCode` varchar(10) DEFAULT NULL,
   `Code` varchar(10) NOT NULL,
   `Description` varchar(50) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT NOW(),
+  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 --
 -- Dumping data for table `lookuptable`
 --
-DELETE FROM lookuptable;
+
 INSERT INTO `lookuptable` (`ID`, `Type`, `ParentCode`, `Code`, `Description`, `Timestamp`) VALUES
-(1, 'Course', NULL, 'AD', 'Office Administration', '2017-11-15 17:56:04'),
-(2, 'Course', NULL, 'SYD', 'Systems Development', '2017-11-15 17:56:04'),
+(1, 'Course', 'CT', 'AD', 'Office Administration', '2017-11-15 17:56:04'),
+(2, 'Course', 'CT', 'SYD', 'Systems Development', '2017-11-15 17:56:04'),
 (3, 'Cert', NULL, 'NT', 'National Certificate', '2017-11-15 17:56:04'),
 (4, 'Cert', NULL, 'CT', 'Certificate', '2017-11-15 17:56:04'),
 (5, 'Course', 'NT', 'TS', 'Technical Support', '2017-11-15 17:56:04'),
-(6, 'Course', NULL, 'FO', 'Forklift Operation', '2017-11-15 17:56:04'),
-(7, 'Course', NULL, 'KO', 'Krane Operator', '2017-11-15 17:56:04'),
-(8, 'Course', NULL, 'REC', 'Receptionist', '2017-11-15 17:56:04'),
-(9, 'Course', NULL, 'CL', 'Computer Literacy', '2017-11-15 17:56:04'),
-(10, 'Course', NULL, 'CC', 'Call Centre', '2017-11-15 17:56:04'),
-(11, 'Course', NULL, 'WR', 'Wholesale and Retail', '2017-11-15 17:56:04'),
-(12, 'Course', NULL, 'OT', 'Other', '2017-11-15 17:56:04'),
+(6, 'Course', 'CT', 'FO', 'Forklift Operation', '2017-11-15 17:56:04'),
+(7, 'Course', 'CT', 'KO', 'Krane Operator', '2017-11-15 17:56:04'),
+(8, 'Course', 'CT', 'REC', 'Receptionist', '2017-11-15 17:56:04'),
+(9, 'Course', 'CT', 'CL', 'Computer Literacy', '2017-11-15 17:56:04'),
+(10, 'Course', 'CT', 'CC', 'Call Centre', '2017-11-15 17:56:04'),
+(11, 'Course', 'CT', 'WR', 'Wholesale and Retail', '2017-11-15 17:56:04'),
+(12, 'Course', 'CT', 'OT', 'Other', '2017-11-15 17:56:04'),
 (13, 'Ach', NULL, 'P', 'Pass', '2017-11-15 17:56:04'),
 (14, 'Ach', NULL, 'F', 'Fail', '2017-11-15 17:56:04'),
 (15, 'Modules', NULL, 'IC', 'Introduction to Computers', '2017-11-15 17:56:04'),
@@ -94,7 +121,18 @@ INSERT INTO `lookuptable` (`ID`, `Type`, `ParentCode`, `Code`, `Description`, `T
 (46, 'Course', 'NT', 'SWD', 'Software Development (L4 / L5)', '2017-11-15 17:56:04'),
 (47, 'Course', 'NT', 'LD', 'Leadership Development (NQF L4)', '2017-11-15 17:56:04'),
 (48, 'Course', 'NT', 'SE', 'Sound Engineering (NQF L5)', '2017-11-15 17:56:04'),
-(49, 'Course', 'NT', 'ADV', 'Advertising (NQF L5)', '2017-11-15 17:56:04');
+(49, 'Course', 'NT', 'ADV', 'Advertising (NQF L5)', '2017-11-15 17:56:04'),
+(50, 'CERT', NULL, 'SP', 'Skills Programmes', '2017-11-21 20:09:45'),
+(51, 'Course', 'SP', 'ITE', 'IT: End-User- Computing', '2017-11-21 20:23:37'),
+(52, 'Course', 'SP', 'OA', 'Office Administration', '2017-11-21 20:23:37'),
+(53, 'Course', 'SP', 'RC', 'Receptionist', '2017-11-21 20:23:37'),
+(54, 'Course', 'SP', 'ACL', 'Advanced Computer Literacy', '2017-11-21 20:23:37'),
+(55, 'Course', 'SP', 'RO', 'Retail Operations', '2017-11-21 20:23:37'),
+(56, 'Course', 'SP', 'CC', 'Credit controller', '2017-11-21 20:23:37'),
+(57, 'Course', 'SP', 'TS', 'Technical Support', '2017-11-21 20:23:38'),
+(58, 'Course', 'SP', 'EYD', 'Early Childhood Development', '2017-11-21 20:23:38'),
+(59, 'Course', 'SP', 'LED', 'Leadership Development', '2017-11-21 20:23:38'),
+(60, 'Course', 'SP', 'SG', 'Sound Engineering', '2017-11-21 20:23:38');
 
 -- --------------------------------------------------------
 
@@ -109,13 +147,10 @@ CREATE TABLE IF NOT EXISTS `members` (
   `email` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `Privileges` int(11) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT NOW(),
+  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `members`
---
 -- --------------------------------------------------------
 
 --
@@ -125,12 +160,12 @@ CREATE TABLE IF NOT EXISTS `members` (
 CREATE TABLE IF NOT EXISTS `privileges` (
   `ID` int(11) NOT NULL,
   `Description` varchar(50) NOT NULL DEFAULT 'None'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `privileges`
 --
-DELETE FROM `privileges`;
+
 INSERT INTO `privileges` (`ID`, `Description`) VALUES
 (0, 'None'),
 (1, 'Admin'),
@@ -146,13 +181,9 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `CourseCode` varchar(10) NOT NULL,
   `MemberName` varchar(256) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT NOW(),
+  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-);
-
---
--- Dumping data for table `registrations`
---
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -172,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `studentpersonalinformation` (
   `StudentHomeAddress` varchar(40) NOT NULL,
   `StudentsContactDetails` bigint(10) NOT NULL,
   PRIMARY KEY (`studentpersonalinformationID`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -190,13 +221,9 @@ CREATE TABLE IF NOT EXISTS `studentsassessmentmarks` (
   `SAQAID` varchar(10) NOT NULL,
   `PercentageAchieved` decimal(5,2) NOT NULL,
   `Achievement` varchar(4) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT NOW(),
+  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`studentassessmentmarksID`)
-);
-
---
--- Dumping data for table `studentsassessmentmarks`
---
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -216,5 +243,8 @@ CREATE TABLE IF NOT EXISTS `studentsonarrears` (
   `InterestPercentage` decimal(5,0) NOT NULL,
   `AmountDue` varchar(20) NOT NULL,
   PRIMARY KEY (`StudentsOnArrearsID`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
