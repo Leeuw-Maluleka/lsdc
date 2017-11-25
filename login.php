@@ -47,9 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width">
 <title>LSDC Login</title>
 <link href="styles/loginstyles.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 	<form name="frmregister"action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >

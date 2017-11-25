@@ -31,6 +31,7 @@
 <head>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
 </head>
 <body>
     <a href="../pages/menu.php">Menu</a><br>
@@ -110,14 +111,32 @@
     </form>
 
 <?php
+const session_Index = "CourseName";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $coursecode = $_POST["NTCourseName"];
-    if ($_POST["CertificateType"] == "CT") {
-        $coursecode = $_POST["CTCourseName"];
-    }
-    else if ($_POST["CertificateType"] == "NT") {
-        $coursecode = $_POST["NTCourseName"];
-    }
+
+        $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='CERT'";
+        $result = $connection->query($sql);
+        if (!$connection->query($sql)) {
+            die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
+        }
+        $coursecode = "none";
+        if ($result->num_rows > 0) {
+            $rowsremaining = $result->num_rows;
+            while ($row = $result->fetch_assoc()) {
+                $sessionName = $row["CODE"].session_Index;
+                if ($_POST[$sessionName] != "none") {
+                    $coursecode = $_POST[$sessionName];
+                }
+            }
+        }
+        
+//    $coursecode = $_POST["NTCourseName"];
+//    if ($_POST["CertificateType"] == "CT") {
+//        $coursecode = $_POST["CTCourseName"];
+//    }
+//    else if ($_POST["CertificateType"] == "NT") {
+//        $coursecode = $_POST["NTCourseName"];
+//    }
     $_SESSION["RegisterCourse"] = $coursecode;
     $sqltext = "SELECT CourseCode, l.Description,Payment,Registration,Certification,CarryCard,Duration, 
                 (Payment*Duration+Certification+Registration+COALESCE(CarryCard,0)) TotalFees 

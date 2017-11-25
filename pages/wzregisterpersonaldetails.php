@@ -31,6 +31,7 @@
 <head>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
 </head>
 <body>
     <a href="../pages/menu.php">Menu</a><br>
