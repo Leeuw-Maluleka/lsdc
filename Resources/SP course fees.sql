@@ -1,31 +1,55 @@
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('ITE', 570, 250, 570, 10);
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'ICL', 'Intermediate computer literacy', NOW());
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('OA', 550, 250, 550, 10);
+INSERT INTO coursefees (CourseCode, Payment, Duration)
+VALUES ('ICL', 2550, 1.5);
+-- --------------------------------------------------------------------------------
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('RC', 590, 250, 590, 6);
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'DC', 'Data Capturing', NOW());
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('ACL', 580, 250, 580, 6);
+INSERT INTO coursefees (CourseCode, Payment, Duration)
+VALUES ('DC', 2500, 1.5);
+-- --------------------------------------------------------------------------------
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('RO', 500, 250, 500, 10);
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'PM', 'Project Management', NOW());
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('CC', 520, 250, 520, 6);
+INSERT INTO coursefees (CourseCode, Payment, Registration, Duration)
+VALUES ('PM', 1775, 1775, 0.75);
+-- --------------------------------------------------------------------------------
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('TS', 650, 250, 650, 10);
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'PR', 'PC Repairs', NOW());
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('EYD', 1000, 1000, 500, 6);
+INSERT INTO coursefees (CourseCode, Payment, Registration, Duration)
+VALUES ('PR', 1850, 1825, 1.75);
+-- --------------------------------------------------------------------------------
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('LED', 1000, 1000, 500, 6);
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'SCC', 'Call Centre', NOW());
 
-INSERT INTO `lsdccoza_lsdcdb`.`coursefees` (`CourseCode`, `Payment`, `Registration`, `Certification`, `Duration`) 
-VALUES ('SG', 1000, 1000, 500, 6);
+INSERT INTO coursefees (CourseCode, Payment, Duration)
+VALUES ('SCC', 2650, 2);
+-- --------------------------------------------------------------------------------
 
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'CA', 'Cash Controller/Cashier', NOW());
+
+INSERT INTO coursefees (CourseCode, Payment, Duration)
+VALUES ('CA', 2700, 1.5);
+-- --------------------------------------------------------------------------------
+
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'DH', 'Dispatcher/ Health and Safety', NOW());
+
+INSERT INTO coursefees (CourseCode, Payment, Duration)
+VALUES ('DH', 2700, 0.25);
+-- --------------------------------------------------------------------------------
+
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'ST', 'BS', 'Business skills', NOW());
+
+INSERT INTO coursefees (CourseCode, Payment, Duration)
+VALUES ('BS', 3500, 1.5);
