@@ -1,55 +1,39 @@
+INSERT INTO lookuptable (Type, Code, Description, Timestamp) VALUES ('Cert', 'CS', 'On Special', Now());
+-- ---------------------------------------------------------------------------------------------------------
+INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
+VALUES ('Course', 'CS', 'FK', 'Forklift Operator (NQF L3)', NOW());
 
 INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'ICL', 'Intermediate computer literacy', NOW());
-
-INSERT INTO coursefees (CourseCode, Payment, Duration)
-VALUES ('ICL', 2550, 1.5);
--- --------------------------------------------------------------------------------
+VALUES ('Course', 'CS', 'FW', 'Forkift (License Renewal)', NOW());
 
 INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'DC', 'Data Capturing', NOW());
-
-INSERT INTO coursefees (CourseCode, Payment, Duration)
-VALUES ('DC', 2500, 1.5);
--- --------------------------------------------------------------------------------
+VALUES ('Course', 'CS', 'FF', 'Fire Fighter (NQF L3)', NOW());
 
 INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'PM', 'Project Management', NOW());
-
-INSERT INTO coursefees (CourseCode, Payment, Registration, Duration)
-VALUES ('PM', 1775, 1775, 0.75);
--- --------------------------------------------------------------------------------
+VALUES ('Course', 'CS', 'WB', 'Web Design Introduction', NOW());
 
 INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'PR', 'PC Repairs', NOW());
+VALUES ('Course', 'CS', 'WBA', 'Web Design Advanced', NOW());
 
-INSERT INTO coursefees (CourseCode, Payment, Registration, Duration)
-VALUES ('PR', 1850, 1825, 1.75);
--- --------------------------------------------------------------------------------
+Courses on Special	Total Fee	Training	Certification	Carry Card	Duration
+					Assessment & Moderation				
+										
+-- Forklift Operator (NQF L3)	R	1520	R	1200	R	250	R	70	5	Days
+INSERT INTO coursefees (CourseCode, Payment, Certification, CarryCard, Duration, Timestamp) 
+VALUES ('FK', 1200, 250, 70, 0, NOW());
 
-INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'SCC', 'Call Centre', NOW());
+-- Forklift (License Renewal)	R	570	R	500	R	250	R	70	1	Days
+INSERT INTO coursefees (CourseCode, Payment, Certification, CarryCard, Duration, Timestamp) 
+VALUES ('FW', 500, 250, 70, 0, NOW());
 
-INSERT INTO coursefees (CourseCode, Payment, Duration)
-VALUES ('SCC', 2650, 2);
--- --------------------------------------------------------------------------------
+-- Fire Fighter (NQF L3)	R	950	R	700					5	Days
+INSERT INTO coursefees (CourseCode, Payment, Duration, Timestamp) 
+VALUES ('FF', 700, 0, NOW());
 
-INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'CA', 'Cash Controller/Cashier', NOW());
+-- Web Design Introduction	R	2500							8	Weeks
+INSERT INTO coursefees (CourseCode, Payment, Duration, Timestamp) 
+VALUES ('WB', 2500, 2, NOW());
 
-INSERT INTO coursefees (CourseCode, Payment, Duration)
-VALUES ('CA', 2700, 1.5);
--- --------------------------------------------------------------------------------
-
-INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'DH', 'Dispatcher/ Health and Safety', NOW());
-
-INSERT INTO coursefees (CourseCode, Payment, Duration)
-VALUES ('DH', 2700, 0.25);
--- --------------------------------------------------------------------------------
-
-INSERT INTO lookuptable (Type, ParentCode, Code, Description, Timestamp) 
-VALUES ('Course', 'ST', 'BS', 'Business skills', NOW());
-
-INSERT INTO coursefees (CourseCode, Payment, Duration)
-VALUES ('BS', 3500, 1.5);
+-- Web Design Advanced	R	5000							4 Months
+INSERT INTO coursefees (CourseCode, Payment, Duration, Timestamp) 
+VALUES ('WBA', 5000, 4, NOW()); -- ------------------------------------

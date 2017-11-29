@@ -15,6 +15,8 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
     if (!isset($_SESSION["user"])) {
         echo '<head>';
         echo '<meta name="viewport" content="width=device-width">';
+        echo '<link rel="stylesheet" href="../styles/styles.css">';
+        echo '<link rel="icon" type="image/png" href="../images/favicon.png">';
         echo '</head>';
         echo '<body>';
         echo 'You have been logged out. <a href="../login.php">Click here</a> to log in.';

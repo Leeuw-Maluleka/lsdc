@@ -3,12 +3,14 @@
     width: 300px;
 }
 
-body { background-color: grey; }
+body { background-color: rgb(76,159,204) }
 
 select, input { 
     width: 100%; 
     padding: 5px;
 }
+
+a { color: white }
 
 a.button {
     -webkit-appearance: button;
