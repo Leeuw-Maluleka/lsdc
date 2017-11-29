@@ -31,8 +31,18 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
 </head>
 <body>
     <a href="../login.php?doLogoff=true">Logoff</a>
-    <a href="quote.php" class="button">Quote</a><br>
-    <a href="register.php" class="button">Register</a><br>
-    <a href="#" class="button">Assignments</a><br>
-    <a href="#" class="button">Billing</a><br>
+    <table>
+        <tr>
+            <td><a href="quote.php" class="button">Quote</a></td>
+        </tr>
+        <tr>
+            <td><a href="register.php" class="button">Register</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="button">Assignments</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="button">Billing</a></td>
+        </tr>
+    </table>    
 </body>

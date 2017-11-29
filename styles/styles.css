@@ -1,6 +1,5 @@
 * { 
     text-align: center; 
-    width: 300px;
 }
 
 body { background-color: rgb(76,159,204) }
@@ -21,6 +20,7 @@ a.button {
     font-size: 36;
     text-decoration: none;
     color: initial;
+    width: 100%
 }
 
 select.course { display: none}
@@ -30,7 +30,8 @@ div.fees { background-color: white }
 body.register { width: 800px }
 
 table { 
-    width: 100%;
+    margin: 0 auto;
+    width: 300px;
     background-color: white;
 }
 
