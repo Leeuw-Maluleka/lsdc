@@ -26,8 +26,19 @@
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION["CertificateType"] = $_POST["CertificateType"];
-        $_SESSION["CTCourseName"] = $_POST["CTCourseName"];
-        $_SESSION["NTCourseName"] = $_POST["NTCourseName"];
+
+        $sql = "SELECT CODE, DESCRIPTION FROM lookuptable WHERE TYPE='CERT'";
+        $result = $connection->query($sql);
+        if (!$connection->query($sql)) {
+            die("Error: Failed to return data from table lookuptable " . $connection->error . "<br>");
+        }
+        if ($result->num_rows > 0) {
+            $rowsremaining = $result->num_rows;
+            while ($row = $result->fetch_assoc()) {
+                $indexName = $row["CODE"]."CourseName";
+                $_SESSION[$indexName] = $_POST[$indexName];                
+            }
+        }
     }
 ?>
 <head>
