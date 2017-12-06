@@ -1,11 +1,41 @@
 * { 
-	text-align: center; 
-	width: 300px;
+    text-align: center; 
 }
 
-body { background-color: grey; }
+body { background-color: rgb(76,159,204) }
 
 select, input { 
-	width: 100%; 
-	padding: 5px;
+    width: 100%; 
+    padding: 5px;
 }
+
+a { color: white }
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 36;
+    text-decoration: none;
+    color: initial;
+    width: 100%
+}
+
+select.course { display: none}
+
+div.fees { background-color: white }
+
+body.register { width: 800px }
+
+table { 
+    margin: 0 auto;
+    width: 300px;
+    background-color: white;
+}
+
+td.desc  { width: 30%; }
+td.desc th.desc { font-weight: bold; }
+
+
