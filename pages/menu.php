@@ -36,7 +36,7 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
             <td><a href="quote.php" class="button">Quote</a></td>
         </tr>
         <tr>
-            <td><a href="register.php" class="button">Registrations</a></td>
+            <td><a href="register.php" class="button">Register</a></td>
         </tr>
         <tr>
             <td><a href="#" class="button">Assignments</a></td>
