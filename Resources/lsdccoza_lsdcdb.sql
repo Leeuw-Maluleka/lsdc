@@ -1,30 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Nov 29, 2017 at 10:00 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `lsdccoza_lsdcdb`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coursefees`
---
+DROP TABLE IF EXISTS `coursefees` ;
 
 CREATE TABLE IF NOT EXISTS `coursefees` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -33,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `coursefees` (
   `Registration` decimal(6,2) DEFAULT NULL,
   `Certification` decimal(6,2) DEFAULT NULL,
   `CarryCard` decimal(6,2) DEFAULT NULL,
+  `Discount` decimal(6,2) DEFAULT NULL,
   `Duration` int(11) NOT NULL,
   `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
@@ -42,41 +17,93 @@ CREATE TABLE IF NOT EXISTS `coursefees` (
 -- Dumping data for table `coursefees`
 --
 
-INSERT INTO `coursefees` (`ID`, `CourseCode`, `Payment`, `Registration`, `Certification`, `CarryCard`, `Duration`, `Timestamp`) VALUES
-(4, 'ECD', '570.00', '1200.00', '1000.00', NULL, 11, '2017-11-15 18:28:13'),
-(5, 'EUC', '570.00', '1200.00', '1000.00', NULL, 11, '2017-11-15 18:37:33'),
-(6, 'TS', '650.00', '1200.00', '1000.00', NULL, 11, '2017-11-15 18:37:33'),
-(8, 'WRO', '640.00', '1000.00', '1000.00', NULL, 11, '2017-11-15 18:37:34'),
-(9, 'SWD', '650.00', '1200.00', '1000.00', NULL, 11, '2017-11-15 18:37:34'),
-(10, 'LD', '910.00', '1500.00', '1000.00', NULL, 11, '2017-11-15 18:37:34'),
-(11, 'SE', '910.00', '1500.00', '1000.00', NULL, 11, '2017-11-15 18:37:34'),
-(12, 'ADV', '910.00', '1500.00', '1000.00', NULL, 11, '2017-11-15 18:37:34'),
-(13, 'TT', '100.00', '200.00', '300.00', '10.00', 12, '0000-00-00 00:00:00'),
-(15, 'ITE', '570.00', '250.00', '570.00', NULL, 10, '2017-11-22 21:54:10'),
-(16, 'OA', '550.00', '250.00', '550.00', NULL, 10, '2017-11-22 21:54:10'),
-(17, 'RC', '590.00', '250.00', '590.00', NULL, 6, '2017-11-22 22:00:45'),
-(18, 'ACL', '580.00', '250.00', '580.00', NULL, 6, '2017-11-22 22:00:45'),
-(19, 'RO', '500.00', '250.00', '500.00', NULL, 10, '2017-11-22 22:00:45'),
-(20, 'CC', '520.00', '250.00', '520.00', NULL, 6, '2017-11-22 22:00:45'),
-(21, 'STS', '650.00', '250.00', '650.00', NULL, 10, '2017-11-22 22:00:46'),
-(22, 'EYD', '1000.00', '1000.00', '500.00', NULL, 6, '2017-11-22 22:00:46'),
-(23, 'LED', '1000.00', '1000.00', '500.00', NULL, 6, '2017-11-22 22:00:46'),
-(24, 'SG', '1000.00', '1000.00', '500.00', NULL, 6, '2017-11-22 22:00:46'),
-(25, 'CRC', '520.00', '250.00', '520.00', NULL, 6, '2017-11-28 21:32:54'),
-(28, 'ICL', '2550.00', NULL, NULL, NULL, 2, '2017-11-28 22:38:39'),
-(29, 'DC', '2500.00', NULL, NULL, NULL, 2, '2017-11-28 22:38:39'),
-(30, 'PM', '1775.00', '1775.00', NULL, NULL, 1, '2017-11-28 22:38:39'),
-(31, 'PR', '1850.00', '1825.00', NULL, NULL, 2, '2017-11-28 22:38:39'),
-(32, 'SCC', '2650.00', NULL, NULL, NULL, 2, '2017-11-28 22:38:39'),
-(33, 'CA', '2700.00', NULL, NULL, NULL, 2, '2017-11-28 22:38:40'),
-(34, 'DH', '2700.00', NULL, NULL, NULL, 1, '2017-11-28 22:38:40'),
-(35, 'BS', '3500.00', NULL, NULL, NULL, 2, '2017-11-28 22:38:40'),
-(47, 'FK', '1200.00', NULL, '250.00', '70.00', 1, '2017-11-29 21:27:48'),
-(48, 'FW', '500.00', NULL, '250.00', '70.00', 1, '2017-11-29 21:27:48'),
-(49, 'FF', '700.00', NULL, NULL, NULL, 1, '2017-11-29 21:27:49'),
-(50, 'WB', '2500.00', NULL, NULL, NULL, 2, '2017-11-29 21:27:49'),
-(51, 'WBA', '5000.00', NULL, NULL, NULL, 4, '2017-11-29 21:27:49');
+INSERT INTO `coursefees` (`ID`, `CourseCode`, `Payment`, `Registration`, `Certification`, `CarryCard`, `Discount`, `Duration`, `Timestamp`) VALUES
+(4, 'ECD', '910.00', '1000.00', '1000.00', NULL, '-10.00', 11, '2017-11-15 18:28:13'),
+(5, 'EUC', '570.00', '1200.00', '1000.00', NULL, NULL, 11, '2017-11-15 18:37:33'),
+(6, 'TS', '650.00', '1200.00', '1000.00', NULL, NULL, 11, '2017-11-15 18:37:33'),
+(8, 'WRO', '640.00', '1000.00', '1000.00', NULL, NULL, 11, '2017-11-15 18:37:34'),
+(9, 'SWD', '650.00', '1200.00', '1000.00', NULL, NULL, 11, '2017-11-15 18:37:34'),
+(10, 'LD', '910.00', '1500.00', '1000.00', NULL, '-10.00', 11, '2017-11-15 18:37:34'),
+(11, 'SE', '910.00', '1500.00', '1000.00', NULL, '-10.00', 11, '2017-11-15 18:37:34'),
+(12, 'ADV', '910.00', '1500.00', '1000.00', NULL, '-10.00', 11, '2017-11-15 18:37:34'),
+(13, 'TT', '100.00', '200.00', '300.00', '10.00', NULL, 12, '0000-00-00 00:00:00'),
+(15, 'ITE', '570.00', '250.00', '570.00', NULL, NULL, 10, '2017-11-22 21:54:10'),
+(16, 'OA', '550.00', '250.00', '550.00', NULL, NULL, 10, '2017-11-22 21:54:10'),
+(17, 'RC', '590.00', '250.00', '590.00', NULL, NULL, 6, '2017-11-22 22:00:45'),
+(18, 'ACL', '580.00', '250.00', '580.00', NULL, NULL, 6, '2017-11-22 22:00:45'),
+(19, 'RO', '500.00', '250.00', '500.00', NULL, NULL, 10, '2017-11-22 22:00:45'),
+(20, 'CC', '520.00', '250.00', '520.00', NULL, NULL, 6, '2017-11-22 22:00:45'),
+(21, 'STS', '650.00', '250.00', '650.00', NULL, NULL, 10, '2017-11-22 22:00:46'),
+(22, 'EYD', '1000.00', '1000.00', '500.00', NULL, NULL, 6, '2017-11-22 22:00:46'),
+(23, 'LED', '1000.00', '1000.00', '500.00', NULL, NULL, 6, '2017-11-22 22:00:46'),
+(24, 'SG', '1000.00', '1000.00', '500.00', NULL, NULL, 6, '2017-11-22 22:00:46'),
+(25, 'CRC', '520.00', '250.00', '520.00', NULL, NULL, 6, '2017-11-28 21:32:54'),
+(28, 'ICL', '2550.00', NULL, NULL, NULL, NULL, 2, '2017-11-28 22:38:39'),
+(29, 'DC', '2500.00', NULL, NULL, NULL, NULL, 2, '2017-11-28 22:38:39'),
+(30, 'PM', '0.00', '1775.00', '1775.00', NULL, NULL, 1, '2017-11-28 22:38:39'),
+(31, 'PR', '0.00', '1850.00', '1825.00', NULL, '-25.00', 2, '2017-11-28 22:38:39'),
+(32, 'SCC', '2650.00', NULL, NULL, NULL, NULL, 2, '2017-11-28 22:38:39'),
+(33, 'CA', '2700.00', NULL, NULL, NULL, NULL, 2, '2017-11-28 22:38:40'),
+(34, 'DH', '2700.00', NULL, NULL, NULL, NULL, 1, '2017-11-28 22:38:40'),
+(35, 'BS', '3500.00', NULL, NULL, NULL, NULL, 2, '2017-11-28 22:38:40'),
+(47, 'FK', '0.00', '1200.00', '250.00', '70.00', NULL, 1, '2017-11-29 21:27:48'),
+(48, 'FW', '0.00', '500.00', '250.00', '70.00', '-250.00', 1, '2017-11-29 21:27:48'),
+(49, 'FF', '0.00', '0.00', '700.00', NULL, '250.00', 1, '2017-11-29 21:27:49'),
+(50, 'WB', '0.00', '0.00', '2500.00', NULL, NULL, 2, '2017-11-29 21:27:49'),
+(51, 'WBA', '0.00', '0.00', '5000.00', NULL, NULL, 4, '2017-11-29 21:27:49');
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `coursefeesview`
+--
+CREATE TABLE IF NOT EXISTS `coursefeesview` (
+`CourseCode` varchar(10)
+,`Description` varchar(50)
+,`Payment` decimal(6,2)
+,`Registration` decimal(6,2)
+,`Certification` decimal(6,2)
+,`CarryCard` decimal(6,2)
+,`Duration` int(11)
+,`Discount` decimal(6,2)
+,`TotalFees` decimal(20,2)
+);
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `coursehierachyfeesview`
+--
+CREATE TABLE IF NOT EXISTS `coursehierachyfeesview` (
+`Type` varchar(10)
+,`ParentCode` varchar(10)
+,`ParentDesc` varchar(50)
+,`Code` varchar(10)
+,`Description` varchar(50)
+,`Payment` decimal(6,2)
+,`Registration` decimal(6,2)
+,`Certification` decimal(6,2)
+,`CarryCard` decimal(6,2)
+,`Duration` int(11)
+,`Discount` decimal(6,2)
+,`TotalFees` decimal(20,2)
+);
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `courseregistrations`
+--
+CREATE TABLE IF NOT EXISTS `courseregistrations` (
+`name` varchar(256)
+,`CourseCode` varchar(10)
+,`Description` varchar(50)
+,`Payment` decimal(6,2)
+,`Registration` decimal(6,2)
+,`Certification` decimal(6,2)
+,`CarryCard` decimal(6,2)
+,`Duration` int(11)
+,`TotalFees` decimal(20,2)
+,`TimeStamp` datetime
+);
 -- --------------------------------------------------------
 
 --
@@ -91,25 +118,15 @@ CREATE TABLE IF NOT EXISTS `lookuptable` (
   `Description` varchar(50) NOT NULL,
   `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=87 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=81 ;
 
 --
 -- Dumping data for table `lookuptable`
 --
 
 INSERT INTO `lookuptable` (`ID`, `Type`, `ParentCode`, `Code`, `Description`, `Timestamp`) VALUES
-(1, 'Course', 'CT', 'AD', 'Office Administration', '2017-11-15 17:56:04'),
-(2, 'Course', 'CT', 'SYD', 'Systems Development', '2017-11-15 17:56:04'),
 (3, 'Cert', NULL, 'NT', 'National Certificate', '2017-11-15 17:56:04'),
-(4, 'Cert', NULL, 'CT', 'Certificate', '2017-11-15 17:56:04'),
 (5, 'Course', 'NT', 'TS', 'Technical Support', '2017-11-15 17:56:04'),
-(6, 'Course', 'CT', 'FO', 'Forklift Operation', '2017-11-15 17:56:04'),
-(7, 'Course', 'CT', 'KO', 'Krane Operator', '2017-11-15 17:56:04'),
-(8, 'Course', 'CT', 'REC', 'Receptionist', '2017-11-15 17:56:04'),
-(9, 'Course', 'CT', 'CL', 'Computer Literacy', '2017-11-15 17:56:04'),
-(10, 'Course', 'CT', 'CC', 'Call Centre', '2017-11-15 17:56:04'),
-(11, 'Course', 'CT', 'WR', 'Wholesale and Retail', '2017-11-15 17:56:04'),
-(12, 'Course', 'CT', 'OT', 'Other', '2017-11-15 17:56:04'),
 (13, 'Ach', NULL, 'P', 'Pass', '2017-11-15 17:56:04'),
 (14, 'Ach', NULL, 'F', 'Fail', '2017-11-15 17:56:04'),
 (15, 'Modules', NULL, 'IC', 'Introduction to Computers', '2017-11-15 17:56:04'),
@@ -175,26 +192,16 @@ INSERT INTO `lookuptable` (`ID`, `Type`, `ParentCode`, `Code`, `Description`, `T
 -- --------------------------------------------------------
 
 --
--- Table structure for table `members`
+-- Stand-in structure for view `lookuptableview`
 --
-
-CREATE TABLE IF NOT EXISTS `members` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(256) NOT NULL,
-  `nick_name` varchar(256) NOT NULL,
-  `email` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `Privileges` int(11) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `members`
---
-
-INSERT INTO `members` (`id`, `name`, `nick_name`, `email`, `password`, `Privileges`, `Timestamp`) VALUES
-(1, 'KKK', '', '', 'cb42e130d1471239a27fca6228094f0e', 2, '2017-11-22 23:37:58');
+CREATE TABLE IF NOT EXISTS `lookuptableview` (
+`Type` varchar(10)
+,`ParentCode` varchar(10)
+,`ParentDesc` varchar(50)
+,`Code` varchar(10)
+,`Description` varchar(50)
+);
+-- --------------------------------------------------------
 
 -- --------------------------------------------------------
 
@@ -202,33 +209,7 @@ INSERT INTO `members` (`id`, `name`, `nick_name`, `email`, `password`, `Privileg
 -- Table structure for table `privileges`
 --
 
-CREATE TABLE IF NOT EXISTS `privileges` (
-  `ID` int(11) NOT NULL,
-  `Description` varchar(50) NOT NULL DEFAULT 'None'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `privileges`
---
-
-INSERT INTO `privileges` (`ID`, `Description`) VALUES
-(0, 'None'),
-(1, 'Admin'),
-(2, 'Guest');
-
 -- --------------------------------------------------------
-
---
--- Table structure for table `registrations`
---
-
-CREATE TABLE IF NOT EXISTS `registrations` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `CourseCode` varchar(10) NOT NULL,
-  `MemberName` varchar(256) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -236,59 +217,39 @@ CREATE TABLE IF NOT EXISTS `registrations` (
 -- Table structure for table `studentpersonalinformation`
 --
 
-CREATE TABLE IF NOT EXISTS `studentpersonalinformation` (
-  `studentpersonalinformationID` int(11) NOT NULL,
-  `StudentFirstName` varchar(100) NOT NULL,
-  `StudentMiddleName` varchar(100) NOT NULL,
-  `StudentLastName` varchar(100) NOT NULL,
-  `StudentIDno` varchar(13) NOT NULL,
-  `StudentAge` int(3) NOT NULL,
-  `StudentOccupation` varchar(30) NOT NULL,
-  `StudentGender` varchar(6) NOT NULL,
-  `StudentHomeAddress` varchar(40) NOT NULL,
-  `StudentsContactDetails` bigint(10) NOT NULL,
-  PRIMARY KEY (`studentpersonalinformationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Structure for view `coursefeesview`
+--
+DROP TABLE IF EXISTS `coursefeesview`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `coursefeesview` AS select `c`.`CourseCode` AS `CourseCode`,`l`.`Description` AS `Description`,`c`.`Payment` AS `Payment`,`c`.`Registration` AS `Registration`,`c`.`Certification` AS `Certification`,`c`.`CarryCard` AS `CarryCard`,`c`.`Duration` AS `Duration`,`c`.`Discount` AS `Discount`,(((((`c`.`Payment` * `c`.`Duration`) + `c`.`Certification`) + `c`.`Registration`) + coalesce(`c`.`CarryCard`,0)) + coalesce(`c`.`Discount`,0)) AS `TotalFees` from (`coursefees` `c` join `lookuptable` `l` on(((`c`.`CourseCode` = `l`.`Code`) and (`l`.`Type` = 'Course'))));
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `studentsassessmentmarks`
+-- Structure for view `coursehierachyfeesview`
 --
+DROP TABLE IF EXISTS `coursehierachyfeesview`;
 
-CREATE TABLE IF NOT EXISTS `studentsassessmentmarks` (
-  `studentassessmentmarksID` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `StudentName` varchar(100) NOT NULL,
-  `StudentIDno` varchar(15) NOT NULL,
-  `CourseName` varchar(30) NOT NULL,
-  `CertificateType` varchar(30) NOT NULL,
-  `ModuleName` varchar(40) NOT NULL,
-  `SAQAID` varchar(10) NOT NULL,
-  `PercentageAchieved` decimal(5,2) NOT NULL,
-  `Achievement` varchar(4) NOT NULL,
-  `Timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`studentassessmentmarksID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `coursehierachyfeesview` AS select `l`.`Type` AS `Type`,`l`.`Code` AS `ParentCode`,`l`.`Description` AS `ParentDesc`,`l1`.`Code` AS `Code`,`l1`.`Description` AS `Description`,`c`.`Payment` AS `Payment`,`c`.`Registration` AS `Registration`,`c`.`Certification` AS `Certification`,`c`.`CarryCard` AS `CarryCard`,`c`.`Duration` AS `Duration`,`c`.`Discount` AS `Discount`,(((((`c`.`Payment` * `c`.`Duration`) + `c`.`Certification`) + `c`.`Registration`) + coalesce(`c`.`CarryCard`,0)) + coalesce(`c`.`Discount`,0)) AS `TotalFees` from ((`lookuptable` `l` left join `lookuptable` `l1` on((`l1`.`ParentCode` = `l`.`Code`))) join `coursefees` `c` on((`c`.`CourseCode` = `l1`.`Code`)));
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `studentsonarrears`
+-- Structure for view `courseregistrations`
 --
+DROP TABLE IF EXISTS `courseregistrations`;
 
-CREATE TABLE IF NOT EXISTS `studentsonarrears` (
-  `StudentsOnArrearsID` int(11) NOT NULL,
-  `StudentName` varchar(100) NOT NULL,
-  `StudentIDno` varchar(15) NOT NULL,
-  `CourseName` varchar(30) NOT NULL,
-  `CertificateType` varchar(30) NOT NULL,
-  `TotalCourseFee` varchar(40) NOT NULL,
-  `CourseDuration` varchar(10) NOT NULL,
-  `MonthsBehind` decimal(5,2) NOT NULL,
-  `InterestPercentage` decimal(5,0) NOT NULL,
-  `AmountDue` varchar(20) NOT NULL,
-  PRIMARY KEY (`StudentsOnArrearsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `courseregistrations` AS select `m`.`name` AS `name`,`c`.`CourseCode` AS `CourseCode`,`l`.`Description` AS `Description`,`c`.`Payment` AS `Payment`,`c`.`Registration` AS `Registration`,`c`.`Certification` AS `Certification`,`c`.`CarryCard` AS `CarryCard`,`c`.`Duration` AS `Duration`,(((((`c`.`Payment` * `c`.`Duration`) + `c`.`Certification`) + `c`.`Registration`) + coalesce(`c`.`CarryCard`,0)) + coalesce(`c`.`Discount`,0)) AS `TotalFees`,`r`.`Timestamp` AS `TimeStamp` from (((`coursefees` `c` join `lookuptable` `l` on(((`c`.`CourseCode` = `l`.`Code`) and (`l`.`Type` = 'Course')))) join `registrations` `r` on((`r`.`CourseCode` = `c`.`CourseCode`))) join `members` `m` on((`m`.`name` = `r`.`MemberName`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `lookuptableview`
+--
+DROP TABLE IF EXISTS `lookuptableview`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lookuptableview` AS select `l`.`Type` AS `Type`,`l`.`Code` AS `ParentCode`,`l`.`Description` AS `ParentDesc`,`l1`.`Code` AS `Code`,`l1`.`Description` AS `Description` from (`lookuptable` `l` left join `lookuptable` `l1` on((`l1`.`ParentCode` = `l`.`Code`)));
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

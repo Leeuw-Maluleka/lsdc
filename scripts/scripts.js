@@ -54,6 +54,13 @@ function OnLevelChange(form)
         quotediv.style.display = "none" 
         quotediv.innerHTML = ""
     }
+    if (form.CertificateType.value != "none")
+    {
+        var btn = document.getElementsByName("btnmodulemaint")[0]
+        if (btn != null) {
+            btn.style.display = "block"
+        }
+    }
     if (form.CertificateType.value == "NT")
     {
         form.STCourseName.style.display = "none"
@@ -86,4 +93,13 @@ function OnLevelChange(form)
         form.CSCourseName.style.display = "block"
     }
     return true
+}
+
+function reloadPage() {
+    window.location.reload(false);
+}
+
+function setRegisterUrl()
+{   //this forces the address on the browser
+    document.location = "./#update";
 }

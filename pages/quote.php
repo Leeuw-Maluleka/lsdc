@@ -150,10 +150,8 @@
                         }
 
                     $_SESSION["RegisterCourse"] = $coursecode;
-                    $sqltext = "SELECT CourseCode, l.Description,Payment,Registration,Certification,CarryCard,Duration, 
-                                (Payment*Duration+Certification+Registration+COALESCE(CarryCard,0)) TotalFees 
-                                FROM coursefees c JOIN lookuptable l ON c.CourseCode = l.Code AND l.Type = 'Course' 
-                                WHERE CourseCode = '$coursecode'";     
+                    $sqltext = "SELECT CourseCode, Description,Payment,Registration,Certification,CarryCard,Duration, TotalFees 
+                                FROM coursefeesview WHERE CourseCode = '$coursecode'";     
 
                     if (!$connection->query($sqltext)) { 
                         echo "$sqltext<br>";

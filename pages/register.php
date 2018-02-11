@@ -35,11 +35,9 @@
     <span>Registration Details</span><br>
     <?php
         $user = $_SESSION["user"];
-        $sql = "SELECT m.name, c.CourseCode, l.Description,Payment,Registration,Certification,CarryCard,Duration, 
-                (Payment*Duration+Certification+Registration+COALESCE(CarryCard,0)) TotalFees, r.TimeStamp 
-                FROM coursefees c JOIN lookuptable l ON c.CourseCode = l.Code AND l.Type = 'Course'
-                JOIN registrations r ON r.CourseCode = c.CourseCode
-                JOIN members m ON m.name = r.MemberName WHERE m.name = '$user'";
+        $sql = "SELECT name, CourseCode, Description,Payment,Registration,
+                Certification,CarryCard,Duration,TotalFees, TimeStamp 
+                FROM courseregistrations WHERE name = '$user'";
         $result = $connection->query($sql);
         if (!$connection->query($sql)) {
             die("Error: Failed to return data from table $mysql_table " . $connection->error . "<br>");
@@ -55,7 +53,7 @@
             echo '<th>Registration</th>';
             echo '<th>Certification</th>';
             echo '<th>Carry Card</th>';
-            echo '<th>Duration</th>';
+            echo '<th>Months</th>';
             echo '<th>Total Fees</th>';
             echo '</thead><br>';
             echo '<tbody><br>';
