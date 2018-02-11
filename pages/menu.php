@@ -32,27 +32,6 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
 <body>
     <a href="../login.php?doLogoff=true">Logoff</a>
     <table>
-    <?php
-        $user = $_SESSION["user"];
-        $sql = "SELECT m.id, name, nick_name, email, password, Privileges, Timestamp, p.Description Privilege 
-                FROM members m JOIN privileges p ON m.Privileges = p.ID WHERE name = '$user'";
-        $result = $connection->query($sql);
-        if (!$connection->query($sql)) {
-            die("Error: Failed to return data from table [members] " . $connection->error . "<br>");
-        }
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $userPrivilege = $row["Privilege"];
-                break;
-            }
-        }        
-        if ($userPrivilege == "Admin") {
-            echo '<tr>
-                    <td><a href="coursemaintform.php" class="button">Admistration</a></td>
-                </tr>';
-        }
-    ?>
         <tr>
             <td><a href="quote.php" class="button">Quote</a></td>
         </tr>
