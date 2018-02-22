@@ -29,6 +29,7 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="../styles/registerstyles.css">
     <link rel="icon" type="image/png" href="../images/favicon.png">
+	<title>LSDC Registrations</title>
 </head>
 <body>
     <a href="../pages/menu.php">Menu</a><br>

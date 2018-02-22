@@ -28,6 +28,7 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="icon" type="image/png" href="../images/favicon.png">
+	<title>LSDC Portal</title>
 </head>
 <body>
     <a href="../login.php?doLogoff=true">Logoff</a>
@@ -36,7 +37,10 @@ if (!$connection->select_db(DB_NAME)) {die ("lsdcdb selection failed<br>".$conne
             <td><a href="quote.php" class="button">Quote</a></td>
         </tr>
         <tr>
-            <td><a href="register.php" class="button">Register</a></td>
+            <td><a href="register.php" class="button">Registered</a></td>
+        </tr>
+        <tr>
+            <td><a href="webinars.php" class="button">Webinars</a></td>
         </tr>
         <tr>
             <td><a href="#" class="button">Assignments</a></td>
